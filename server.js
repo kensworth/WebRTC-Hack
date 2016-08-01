@@ -32,17 +32,8 @@ const compiler = webpack({
 });
 const socketOpen = (err, token) => {
 	ios.sockets.on('connection', function(socket) {
-		const log = () => {
-			let array = ['>>> '];
-			for(let i = 0; i < arguments.length; i++) {
-				array.push(arguments[i]);
-			}
-			socket.emit('log', array);
-		}
 		socket.on('message', message => {
-			log('Got message: ', message);
-			// fix for room only. pass in room
-			socket.broadcast.emit('message', message);
+			console.log(message);
 		})
 	});
 }

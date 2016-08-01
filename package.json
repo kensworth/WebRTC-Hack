@@ -15,6 +15,7 @@
   "author": "Kenneth Zhang",
   "license": "MIT",
   "dependencies": {
+    "babel-cli": "6.9.0",
     "babel-core": "6.9.0",
     "babel-loader": "6.2.4",
     "babel-plugin-transform-runtime": "6.9.0",
@@ -26,10 +27,9 @@
     "express": "~4.13.4",
     "node-env-file": "0.1.8",
     "node-static": "~0.7.1",
-    "socket.io": "~0.9.16",
+    "socket.io": "^1.4.8",
     "twilio": "~3.3.0-edge",
     "webpack": "1.13.1",
-    "babel-cli": "6.9.0",
     "webpack-dev-middleware": "^1.6.1"
   }
 }
