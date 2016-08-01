@@ -31,21 +31,21 @@ const compiler = webpack({
   output: {filename: 'app.js', path: '/'},
 });
 const socketOpen = (err, token) => {
-	ios.sockets.on('connection', function(socket) {
-		socket.on('message', message => {
-			console.log(message);
-		})
-	});
+  ios.sockets.on('connection', function(socket) {
+    socket.on('message', message => {
+      console.log(message);
+    })
+  });
 }
 
 app.use(webpackMiddleware(compiler, {
-	noInfo: false,
-	publicPath: '/'
+  noInfo: false,
+  publicPath: '/'
 }));
 app.use('/', express.static(path.resolve(__dirname, 'public')));
 server.listen(APP_PORT, () => {
   console.log(`App is now running on http://localhost:${APP_PORT}`);
 });
 client.tokens.create({}, (err, token) => {
-	socketOpen(err, token);
+  socketOpen(err, token);
 });
