@@ -1,9 +1,8 @@
 'use strict';
 
-const socket = io.connect();
-socket.on('log', function(array) {
-  console.log.apply(console, array);
-});
+const namespace = '/test';
+const socket = io(namespace);
+
 function sendMessage(message) {
   console.log('Client sending message: ', message);
   socket.emit('message', message);

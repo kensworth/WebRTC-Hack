@@ -37,6 +37,10 @@ const socketOpen = (err, token) => {
     })
   });
 }
+const testSocket = ios.of('/test');
+testSocket.on('connection', function(socket) {
+  console.log('connection on test socket');
+});
 
 app.use(webpackMiddleware(compiler, {
   noInfo: false,
