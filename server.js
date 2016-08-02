@@ -30,17 +30,20 @@ const compiler = webpack({
   },
   output: {filename: 'app.js', path: '/'},
 });
+
 const socketOpen = (err, token) => {
-  ios.sockets.on('connection', function(socket) {
-    socket.on('message', message => {
-      console.log(message);
-    })
+  ios.on('connection', function(socket) {
+    console.log('initial connection');
+    nameSpaceClaim(socket);
   });
 }
-const testSocket = ios.of('/test');
-testSocket.on('connection', function(socket) {
-  console.log('connection on test socket');
-});
+
+const nameSpaceClaim = (socket) => {
+  socket.on('find namespace', function(name) {
+    const namespace = ios.of(name);
+    namespace.emit('namespace response'); 
+  }); 
+}
 
 app.use(webpackMiddleware(compiler, {
   noInfo: false,

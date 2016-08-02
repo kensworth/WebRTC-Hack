@@ -1,11 +1,11 @@
 'use strict';
 
-const namespace = '/test';
-const socket = io(namespace);
+const socket = io.connect();
+const name = '/test';
+const namespace = io(name);
+console.log('client working');
+socket.emit('find namespace', name);
 
-function sendMessage(message) {
-  console.log('Client sending message: ', message);
-  socket.emit('message', message);
-}
-
-sendMessage('initial connection');
+namespace.on('namespace response', function() {
+  console.log('namespace responded'); 
+});
